@@ -12,10 +12,10 @@ output_dir: "./outputs"
 # 'json': The JSON file created with automatic BLIP2 captions using https://github.com/ExponentialML/Video-BLIP2-Preprocessor
 # 'single_video': A single video file.mp4 and text prompt
 dataset_types: 
-  # - 'image'
+  - 'image'
   - 'folder'
-  # - 'json'
-  # - 'single_video'
+  - 'json'
+  - 'single_video'
 
 # Adds offset noise to training. See https://www.crosslabs.org/blog/diffusion-with-offset-noise
 # If this is enabled, rescale_schedule will be disabled.
@@ -56,10 +56,10 @@ train_text_encoder: False
 lora_version: "cloneofsimo"
 
 # Use LoRA for the UNET model.
-use_unet_lora: False
+use_unet_lora: True
 
 # Use LoRA for the Text Encoder. If this is set, the text encoder for the model will not be trained.
-use_text_lora: False
+use_text_lora: True
 
 # LoRA Dropout. This parameter adds the probability of randomly zeros out elements. Helps prevent overfitting.
 # See: https://pytorch.org/docs/stable/generated/torch.nn.Dropout.html
@@ -125,32 +125,32 @@ train_data:
   # The number of frames to sample. The higher this number, the higher the VRAM (acts similar to batch size).
   n_sample_frames: 8
   
-  # # 'single_video'
-  # single_video_path: "path/to/single/video.mp4"
+  # 'single_video'
+  single_video_path: "path/to/single/video.mp4"
 
-  # # The prompt when using a a single video file
-  # single_video_prompt: ""
+  # The prompt when using a a single video file
+  single_video_prompt: ""
 
-  # # Fallback prompt if caption cannot be read. Enabled for 'image' and 'folder'.
-  # fallback_prompt: ''
+  # Fallback prompt if caption cannot be read. Enabled for 'image' and 'folder'.
+  fallback_prompt: ''
   
   # 'folder'
-  path: "/home/luthando/.cache/datasets/Appimate/T2V"
+  path: "path/to/folder/of/videos/"
 
-  # # 'json'
-  # json_path: 'path/to/train/json/'
+  # 'json'
+  json_path: 'path/to/train/json/'
 
-  # # 'image'
-  # image_dir: 'path/to/image/directory'
+  # 'image'
+  image_dir: 'path/to/image/directory'
 
-  # # The prompt for all image files. Leave blank to use caption files (.txt) 
-  # single_img_prompt: ""
+  # The prompt for all image files. Leave blank to use caption files (.txt) 
+  single_img_prompt: ""
 
 # Validation data parameters.
 validation_data:
 
   # A custom prompt that is different from your training dataset. 
-  prompt: "Please simplify this expression: (x+1)(x-1)"
+  prompt: ""
 
   # Whether or not to sample preview during training (Requires more VRAM).
   sample_preview: True
